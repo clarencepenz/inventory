@@ -137,6 +137,7 @@ export default function Login(props) {
               autoFocus
               value={state.email}
               onChange={handleChange} 
+              required
             />
             <TextField
               variant="outlined"
@@ -150,6 +151,7 @@ export default function Login(props) {
               autoComplete="current-password"
               value={state.password}
               onChange={handleChange} 
+              required
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -161,6 +163,7 @@ export default function Login(props) {
               variant="contained"
               color="primary"
               className={classes.submit}
+              disabled={!state.firstname && !state.password}
             >
               Sign In
             </Button>

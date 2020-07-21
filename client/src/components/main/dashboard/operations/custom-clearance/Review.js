@@ -106,15 +106,15 @@ export default function Review(props) {
           </ListItem>
           <ListItem className={classes.listItem}>
             <ListItemText primary='Bill of  Laden' />
-            <Typography variant="body2">{props.values.bol ? <DescriptionIcon/> : ''}</Typography>
+            <Typography variant="body2"><a href={props.values.bol} target='_blank' rel="noopener noreferrer">{props.values.bol ? <DescriptionIcon/> : ''}</a></Typography>
           </ListItem>
           <ListItem className={classes.listItem}>
             <ListItemText primary='Commercial Invoice' />
-            <Typography variant="body2">{props.values.ci ? <DescriptionIcon/> : ''}</Typography>
+            <Typography variant="body2"><a href={props.values.ci} target='_blank' rel="noopener noreferrer">{props.values.ci ? <DescriptionIcon/> : ''}</a></Typography>
           </ListItem>
           <ListItem className={classes.listItem}>
             <ListItemText primary='Contract' />
-            <Typography variant="body2">{props.values.uc ? <DescriptionIcon/> : ''}</Typography>
+            <Typography variant="body2"><a href={props.values.uc} target='_blank' rel="noopener noreferrer">{props.values.uc ? <DescriptionIcon/> : ''}</a></Typography>
           </ListItem>
           <ListItem className={classes.listItem}>
             <ListItemText primary='Group' />
@@ -170,7 +170,7 @@ export default function Review(props) {
           </ListItem>
           <ListItem className={classes.listItem}>
             <ListItemText primary='Interchange' />
-            <Typography variant="body2">{props.values.interChange ? <DescriptionIcon/> : ''}</Typography>
+            <Typography variant="body2"><a href={props.values.interChange} target='_blank' rel="noopener noreferrer">{props.values.interChange ? <DescriptionIcon/> : ''}</a></Typography>
           </ListItem>
       </List>
     </React.Fragment>

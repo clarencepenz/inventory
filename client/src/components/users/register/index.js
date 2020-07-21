@@ -141,6 +141,7 @@ export default function Register(props) {
                         autoFocus
                         value={state.firstname}
                         onChange={handleChange} 
+                        required
                     />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -154,6 +155,7 @@ export default function Register(props) {
                         autoComplete="lname"
                         value={state.lastname}
                         onChange={handleChange} 
+                        required
                     />
                     </Grid>
                     <Grid item xs={12}>
@@ -181,6 +183,7 @@ export default function Register(props) {
                         autoComplete="email"
                         value={state.email}
                         onChange={handleChange} 
+                        required
                     />
                     </Grid>
                     <Grid item xs={12}>
@@ -195,6 +198,7 @@ export default function Register(props) {
                         autoComplete="current-password"
                         value={state.password}
                         onChange={handleChange} 
+                        required
                     />
                     </Grid>
                     <Grid item xs={12}>
@@ -210,7 +214,7 @@ export default function Register(props) {
                     variant="contained"
                     color="primary"
                     className={classes.submit}
-                    
+                    disabled={!state.firstname && !state.password && !state.email && !state.password && !state.department}
                 >
                     Sign Up
                 </Button>

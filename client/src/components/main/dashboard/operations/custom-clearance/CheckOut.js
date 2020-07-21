@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import DoneIcon from '@material-ui/icons/Done';
 import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -51,11 +52,12 @@ const useStyles = makeStyles((theme) => ({
 const steps = ['Category', 'Cargo details', 'Agent details', 'Review your order'];
 
 export default function Checkout(props) {
-
-  
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const [loading, setLoading] = React.useState(true)
+  const [loading, setLoading] = React.useState(true);
+  const [id, setID] = React.useState(0);
+  const [preId, setPreID] = React.useState('');
+
  
   const [state , setState] = React.useState({
     category: '',
@@ -108,7 +110,8 @@ export default function Checkout(props) {
     dateCRTTP: '',
     dIR: '',
     fRD: '',
-    interChange: ''
+    interChange: '',
+    generatedID:  ''
   })
 
   
@@ -163,7 +166,8 @@ const  {
   dateCRTTP,
   dIR,
   fRD,
-  interChange
+  interChange,
+  generatedID
 
 } = state;
 
@@ -217,7 +221,8 @@ const  {
     dateCRTTP,
     dIR,
     fRD,
-    interChange
+    interChange,
+    generatedID
   
   }
 
@@ -262,7 +267,8 @@ const  {
           'dateCRTTP': dateCRTTP,
           'dIR': dIR,
           'fRD': fRD,
-          'interChange': interChange
+          'interChange': interChange,
+          'generatedID': generatedID
         
         }
         axios.post('https://cipher-inventory.herokuapp.com/api/clearance', payload, { 
@@ -339,11 +345,27 @@ const getStepContent =(step) => {
     if( activeStep === steps.length - 1){
       sendDetailsToServer()
     }
+
+    if( activeStep === 0){
+      setID(id + 1) 
+    }
+
+    if( activeStep === 1){
+      setPreID( `NG/IMP/2020/00${id}`)
+    }
+
+    if( activeStep === 2){
+      setState(prevState => ({
+        ...prevState,
+          generatedID: preId
+      }))
+    }
   };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+  
 
   return (
     <React.Fragment>
@@ -361,13 +383,26 @@ const getStepContent =(step) => {
           <React.Fragment>
             {activeStep === steps.length ? (
               <React.Fragment>
-                <Typography variant="h5" gutterBottom>
-                  File was successfully saved
-                </Typography>
-                <Typography variant="subtitle1">
-                  GENERATED ID NG/LTD/2001539. 
-                </Typography>
-                utton
+                <div style={{textAlign: 'center'}}>
+                    { loading === false ? <>
+                    
+                    <Typography variant="h5" gutterBottom>
+                        File was successfully saved
+                    </Typography>
+                    <Typography variant="subtitle1">
+                      GENERATED ID... {' '} {state.generatedID}. 
+                      <br/>
+                      <DoneIcon style={{color: 'green', fontSize: 60}}/>
+                    </Typography>
+                  </>  : <h3>Loading...</h3> }
+                    <Button 
+                       href='/' 
+                       className={classes.button}
+                       style={{backgroundColor: '#005561', color: '#fff'}}
+                       >
+                          Back
+                    </Button>
+                </div>
               </React.Fragment>
             ) : (
               <React.Fragment>
