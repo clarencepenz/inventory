@@ -34,7 +34,9 @@ export default function CargoForm(props) {
               if (res.status === 200 ){
               localStorage.setItem('billOfLaden', res.data.secure_url);
               alert('File Uploaded Successfully')
-              }   
+              } else {
+                alert('Upload failed!!')
+              }  
         })
         .then(setLoading(false))
         .catch(err => console.log(err));
@@ -53,7 +55,9 @@ export default function CargoForm(props) {
           if (res.status === 200 ){
             localStorage.setItem('CommercialInvoice', res.data.secure_url);
             alert('File Uploaded Successfully')
-            }
+            } else {
+              alert('Upload failed!!')
+            }  
       })
       .then(setLoading(false))
       .catch(err => console.log(err));
@@ -72,7 +76,9 @@ export default function CargoForm(props) {
         if (res.status === 200 ){
           localStorage.setItem('contract', res.data.secure_url);
           alert('File Uploaded Successfully')
-          }
+          } else {
+            alert('Upload failed!!')
+          }  
     })
     .then(setLoading(false))
     .catch(err => console.log(err));

@@ -37,7 +37,9 @@ export default function AgentForm(props) {
             localStorage.setItem('interChange', res.data.secure_url);
             if (res.status === 200 ){
                 alert('File Uploaded Successfully')
-                }
+                } else {
+                    alert('Upload failed!!')
+                  }  
         })
         .then(setLoading(false))
         .catch(err => console.log(err));

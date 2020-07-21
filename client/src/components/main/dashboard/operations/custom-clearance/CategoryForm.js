@@ -113,7 +113,11 @@ export default function CategoryForm(props) {
                     <option selected>Client</option>
                     
                     {clients.map(client => (
-                      <option key={client._id}>{client.clientName} {props.values.client === props.state.client ? localStorage.setItem('code', client.companyCode) : ''}</option>
+                      <option 
+                        key={client._id}>
+                          {client.clientName} 
+                          {/* {props.values.client === props.state.client ? localStorage.setItem('code', client.companyCode) : ''} */}
+                          </option>
                       
                     ))}
               </select>

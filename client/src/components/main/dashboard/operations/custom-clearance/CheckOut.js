@@ -297,12 +297,7 @@ const {id , value} = e.target
 
 setState(prevState => ({
   ...prevState,
-    [id] : value,
-    bol: localStorage.billOfLaden,
-    ci: localStorage.CommercialInvoice,
-    uc: localStorage.contract,
-    interChange: localStorage.interChange
-
+    [id] : value
 }))
 }
 
@@ -357,9 +352,14 @@ const getStepContent =(step) => {
     if( activeStep === 2){
       setState(prevState => ({
         ...prevState,
-          generatedID: preId
+          generatedID: preId,
+          bol: localStorage.billOfLaden,
+          ci: localStorage.CommercialInvoice,
+          uc: localStorage.contract,
+          interChange: localStorage.interChange
       }))
     }
+
   };
 
   const handleBack = () => {
