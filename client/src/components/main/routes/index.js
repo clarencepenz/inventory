@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from '../../users/login';
 import Register from '../../users/register';
 import Forgot from '../../users/forgotPassword';
+import Auth from '../../users/auth/CheckAuth';
 import Dashboard from '../dashboard/Dashboard';
 import DashboardOperations from '../dashboard/operations/DashoardOperations';
 import DashboardCustomClearance from '../dashboard/operations/DashboardCustomClearance';
@@ -20,14 +21,14 @@ function Routes() {
               </React.Fragment>
             )} />
         
-            <Route path="/dashboard" component={Dashboard}/>
-            <Route path="/dashboard-admin" component={AdminDashboard}/>
-            <Route path="/dashboard-category" component={DashboardOperations}/>
-            <Route path="/dashboard-import-custom-clearance" component={DashboardCustomClearance}/>
+            <Route path="/dashboard" component={Auth(Dashboard)}/>
+            <Route path="/dashboard-admin" component={Auth(AdminDashboard)}/>
+            <Route path="/dashboard-category" component={Auth(DashboardOperations)}/>
+            <Route path="/dashboard-import-custom-clearance" component={Auth(DashboardCustomClearance)}/>
             <Route path="/login" component={Login}/>
             <Route path="/signup" component={Register}/>
             <Route path="/forgot-password" component={Forgot}/>
-            <Route path="/pages" component={Pages}/>
+            <Route path="/pages" component={Auth(Pages)}/>
       </div>
     </Router>
   );
